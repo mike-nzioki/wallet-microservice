@@ -6,7 +6,6 @@ A simple **digital wallet microservice** built with **Spring Boot**, supporting:
 - Deposit funds
 - Withdraw funds
 - Transfer funds between wallets
-- JWT-based user identification (optional)
 - H2 in-memory DB (switchable to PostgreSQL for production)
 
 All endpoints return a **consistent JSON response** with success status, message, data, and error codes.
@@ -64,14 +63,14 @@ All endpoints return:
 ```
 {
 "success": true,
-"code": 0,
+"code": 200,
 "message": "Success message",
 "data": {...} // can be Wallet object, balance, or null
 }
 
 {
 "success": false,
-"code": <error-code>,
+"code": 500,
 "message": "Error message",
 "data": null
 }
@@ -95,9 +94,10 @@ Custom Error Codes
 
 ```
 {
-"id": "a08aede6-ac06-49ab-b530-33970518dd80",
-"userId": "01111111-1111-1111-1111-111111111111",
-"balance": 5000
+    "success": true,
+    "message": "Transfer successful",
+    "data": null,
+    "statusCode": 200
 }
 ```
 
